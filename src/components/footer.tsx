@@ -1,0 +1,1 @@
+import Link from 'next/link';export function Footer(){return <footer className="mt-16 border-t bg-white"><div className="shell flex flex-wrap justify-between gap-3 py-8 text-sm text-slate-500"><span>© {new Date().getFullYear()} BD Transit. Independent transport information platform.</span><Link href="/admin">Admin</Link></div></footer>}

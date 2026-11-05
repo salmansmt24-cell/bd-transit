@@ -1,0 +1,3 @@
+import {NextResponse} from 'next/server';import {getTracking} from '@/lib/data';
+export const dynamic='force-dynamic';
+export async function GET(_request:Request,{params}:{params:Promise<{vehicleId:string}>}){const {vehicleId}=await params;if(!/^[a-zA-Z0-9_-]{1,80}$/.test(vehicleId))return NextResponse.json({error:'Invalid ID'},{status:400});try{const position=await getTracking(vehicleId);return NextResponse.json(position?{status:'live',position}:{status:'unavailable',position:null},{headers:{'Cache-Control':'no-store'}})}catch{return NextResponse.json({status:'unavailable',position:null},{status:503})}}
